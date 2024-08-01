@@ -17,13 +17,15 @@ public class TrainController {
     }
 
     public void startProgram() {
-        String commandLine = scanner.nextLine();
-        Command command = Command.valueOf(commandLine);
+        while (true) {
+            String commandLine = scanner.nextLine();
+            Command command = Command.valueOf(commandLine);
 
-        switch (command) {
-            case GET_SCHEDULE -> getSchedule();
-            case DELETE_FROM_SCHEDULE -> deleteFromSchedule();
-            case ADD_TO_SCHEDULE -> addToSchedule();
+            switch (command) {
+                case GET_SCHEDULE -> getSchedule();
+                case DELETE_FROM_SCHEDULE -> deleteFromSchedule();
+                case ADD_TO_SCHEDULE -> addToSchedule();
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package service;
 
 import entity.Schedule;
+import repository.TrainRepository;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -10,14 +11,20 @@ import java.util.List;
 
 public class TrainServiceImpl implements TrainService {
 
+    private TrainRepository trainRepository;
+
+    public TrainServiceImpl(TrainRepository trainRepository) {
+        this.trainRepository = trainRepository;
+    }
+
     @Override
     public List<Schedule> getSchedule() {
-        return new ArrayList<>();
+        return trainRepository.getSchedule();
     }
 
     @Override
     public boolean deleteFromSchedule(String trainName) {
-        return false;
+        return trainRepository.deleteFromSchedule(trainName);
     }
 
     @Override
@@ -46,8 +53,7 @@ public class TrainServiceImpl implements TrainService {
 
         Schedule schedule = new Schedule(trainName, start, finish);
 
-        //сохранить нужно
-
-        return true;
+        boolean result = trainRepository.addToSchedule(schedule);
+        return result;
     }
 }

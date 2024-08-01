@@ -40,5 +40,6 @@ public class TrainListRepositoryImpl implements TrainRepository {
         }
 
         schedules.add(schedule);
+        return true;
     }
 }
