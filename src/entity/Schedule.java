@@ -18,13 +18,16 @@ public class Schedule {
         this.finishDate = finishDate;
     }
 
+    public Schedule(String string) {
+        String[] strings = string.split(" ");
+        this.trainName = strings[0];
+        this.startDate = LocalDate.parse(strings[1]);
+        this.finishDate = LocalDate.parse(strings[2]);
+    }
+
     @Override
     public String toString() {
-        return "Schedule{" +
-                "trainName='" + trainName + '\'' +
-                ", startDate=" + startDate +
-                ", finishDate=" + finishDate +
-                '}';
+        return trainName + " " + startDate + " " + finishDate;
     }
 
     @Override
